@@ -8,10 +8,12 @@ import ec.com.sofka.customer.UpdateCustomerUseCase;
 import ec.com.sofka.data.CustomerRequestDTO;
 import ec.com.sofka.data.CustomerResponseDTO;
 import ec.com.sofka.mapper.CustomerDTOMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class CustomerHandler {
 
     private final CreateCustomerUseCase createCustomerUseCase;
@@ -43,9 +45,8 @@ public class CustomerHandler {
         return CustomerDTOMapper.mapToResponse(updateCustomerUseCase.execute(customer));
     }
 
-    public CustomerResponseDTO deleteCustomer(CustomerRequestDTO customerRequestDTO) {
-        Customer customer = CustomerDTOMapper.mapToEntity(customerRequestDTO);
-        deleteCustomerUseCase.execute(customer.getIdentification());
+    public CustomerResponseDTO deleteCustomer(Integer customerId) {
+        deleteCustomerUseCase.execute(customerId);
         return new CustomerResponseDTO();
     }
 

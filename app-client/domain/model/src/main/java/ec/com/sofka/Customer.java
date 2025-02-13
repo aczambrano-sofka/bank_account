@@ -9,12 +9,12 @@ public class Customer extends Person {
     public Customer(String name, String gender, Integer age, String identification, String address, String phone,
                     Integer customerId,String password, Boolean status) {
         super(name, gender, age, identification, address, phone);
+        this.customerId = customerId;
         this.password = password;
         this.status = status;
     }
 
     public Customer(Integer customerId, String password, Boolean status) {
-        super(null, null, null, null, null, null);
         this.customerId = customerId;
         this.password = password;
         this.status = status;

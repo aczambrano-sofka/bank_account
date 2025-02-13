@@ -15,7 +15,7 @@ public class UpdateCustomerUseCase {
     }
 
     public Customer execute(Customer customer){
-        Optional<Customer> existingCustomerOpt = customerRepository.findByIdentification(customer.getIdentification());
+        Optional<Customer> existingCustomerOpt = customerRepository.findById(customer.getCustomerId());
 
         if (existingCustomerOpt.isEmpty()){
             throw new ConflictException("The customer with the given identification does not exist.");

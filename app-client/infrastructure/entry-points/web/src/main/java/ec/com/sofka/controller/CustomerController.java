@@ -37,8 +37,8 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{identification}")
-    public ResponseEntity<Void> deleteCustomer(@PathVariable String identification) {
-        customerHandler.deleteCustomer(new CustomerRequestDTO(identification));
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Integer identification) {
+        customerHandler.deleteCustomer(identification);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

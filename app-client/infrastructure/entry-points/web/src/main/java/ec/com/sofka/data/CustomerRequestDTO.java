@@ -48,6 +48,10 @@ public class CustomerRequestDTO {
         this.status = status;
     }
 
+
+    public CustomerRequestDTO() {
+    }
+
     public CustomerRequestDTO(String identification) {
         this.identification = identification;
     }

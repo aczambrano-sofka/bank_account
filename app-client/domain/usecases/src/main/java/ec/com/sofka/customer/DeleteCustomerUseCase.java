@@ -15,8 +15,8 @@ public class DeleteCustomerUseCase {
         this.customerRepository = customerRepository;
     }
 
-    public void execute(String identification) {
-        Optional<Customer> existingCustomerOpt = customerRepository.findByIdentification(identification);
+    public void execute(Integer identification) {
+        Optional<Customer> existingCustomerOpt = customerRepository.findById(identification);
 
         if (existingCustomerOpt.isEmpty()) {
             throw new ConflictException("The customer with the given identification does not exist.");

@@ -17,7 +17,6 @@ public class CustomerDTOMapper {
         customer.setCustomerId(customerRequest.getCustomerId());
         customer.setPassword(customerRequest.getPassword());
         customer.setStatus(customerRequest.getStatus());
-
         return customer;
     }
 
@@ -25,7 +24,6 @@ public class CustomerDTOMapper {
         if (customer == null) {
             return null;
         }
-
         return new CustomerResponseDTO(
                 customer.getCustomerId(),
                 customer.getName(),
@@ -34,7 +32,8 @@ public class CustomerDTOMapper {
                 customer.getIdentification(),
                 customer.getAddress(),
                 customer.getPhone(),
-                customer.getStatus()
+                customer.getStatus(),
+                customer.getPassword()
         );
     }
 }

@@ -10,8 +10,10 @@ public class CustomerResponseDTO {
     private String address;
     private String phone;
     private Boolean status;
+    private String password;
 
-    public CustomerResponseDTO(Integer customerId, String name, String gender, Integer age, String identification, String address, String phone, Boolean status) {
+    public CustomerResponseDTO(Integer customerId, String name, String gender, Integer age, String identification,
+                               String address, String phone, Boolean status,  String password) {
         this.customerId = customerId;
         this.name = name;
         this.gender = gender;
@@ -20,6 +22,7 @@ public class CustomerResponseDTO {
         this.address = address;
         this.phone = phone;
         this.status = status;
+        this.password = password;
     }
 
     public CustomerResponseDTO() {
@@ -87,5 +90,13 @@ public class CustomerResponseDTO {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

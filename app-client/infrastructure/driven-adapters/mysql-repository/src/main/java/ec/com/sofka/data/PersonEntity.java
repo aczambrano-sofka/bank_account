@@ -6,6 +6,7 @@ import jakarta.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class PersonEntity {
 
+    @Column(nullable = false)
     private String name;
 
     private String gender;
