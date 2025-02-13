@@ -1,0 +1,19 @@
+rootProject.name = 'app-client'
+
+include ':app-client'
+findProject(':app-client').projectDir = file('./application/app-client')
+
+include ':usecases'
+findProject(':usecases').projectDir = file('./domain/usecases')
+
+include ':model'
+findProject(':model').projectDir = file('./domain/model')
+
+include ':exception'
+findProject(':exception').projectDir = file('./domain/exception')
+
+include ':mysql-repository'
+findProject(':mysql-repository').projectDir = file('./infrastructure/driven-adapters/mysql-repository')
+
+include ':web'
+findProject(':web').projectDir = file('./infrastructure/entry-points/web')

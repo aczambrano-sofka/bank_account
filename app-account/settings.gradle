@@ -1,0 +1,4 @@
+rootProject.name = 'app-account'
+
+include ':app-account'
+findProject(':app-account').projectDir = file('./application/app-account')
