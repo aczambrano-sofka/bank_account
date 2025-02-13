@@ -7,7 +7,6 @@ public class CustomerMapper {
 
     public static Customer entityToDto(CustomerEntity entity) {
         return new Customer(
-                entity.getId(),
                 entity.getName(),
                 entity.getGender(),
                 entity.getAge(),
@@ -22,7 +21,6 @@ public class CustomerMapper {
 
     public static CustomerEntity dtoToEntity(Customer customer) {
         return new CustomerEntity(
-                customer.getId(),
                 customer.getName(),
                 customer.getGender(),
                 customer.getAge(),

@@ -1,15 +1,25 @@
-package ec.com.sofka;
+package ec.com.sofka.data;
 
-public abstract class Person {
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public abstract class PersonEntity {
 
     private String name;
+
     private String gender;
+
     private Integer age;
+
+    @Column(nullable = false, unique = true)
     private String identification;
+
     private String address;
+
     private String phone;
 
-    public Person(String name, String gender, Integer age, String identification, String address, String phone) {
+    public PersonEntity(String name, String gender, Integer age, String identification, String address, String phone) {
         this.name = name;
         this.gender = gender;
         this.age = age;
@@ -18,8 +28,7 @@ public abstract class Person {
         this.phone = phone;
     }
 
-    public Person() {
-    }
+    public PersonEntity() {}
 
     public String getName() {
         return name;

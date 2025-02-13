@@ -2,34 +2,25 @@ package ec.com.sofka;
 
 public class Customer extends Person {
 
-    private Integer id;
     private Integer customerId;
     private String password;
     private Boolean status;
 
-    public Customer(Integer id, String name, String gender, Integer age, String identification, String address, String phone,
+    public Customer(String name, String gender, Integer age, String identification, String address, String phone,
                     Integer customerId,String password, Boolean status) {
-        super(id, name, gender, age, identification, address, phone);
+        super(name, gender, age, identification, address, phone);
         this.password = password;
         this.status = status;
     }
 
-    public Customer(Integer id1, Integer customerId, String password, Boolean status) {
-        super(null, null, null, null, null, null, null);
-        this.id = id1;
+    public Customer(Integer customerId, String password, Boolean status) {
+        super(null, null, null, null, null, null);
         this.customerId = customerId;
         this.password = password;
         this.status = status;
     }
 
-    @Override
-    public Integer getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
+    public Customer() {
     }
 
     public Integer getCustomerId() {

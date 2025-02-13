@@ -2,7 +2,7 @@ package ec.com.sofka.adapter;
 
 import ec.com.sofka.ConflictException;
 import ec.com.sofka.Customer;
-import ec.com.sofka.config.IMysqlCustomerRepository;
+import ec.com.sofka.database.IMysqlCustomerRepository;
 import ec.com.sofka.data.CustomerEntity;
 import ec.com.sofka.gateway.ICustomerRepository;
 import ec.com.sofka.mapper.CustomerMapper;
@@ -33,7 +33,7 @@ public class CustomerAdapter implements ICustomerRepository {
     public Customer update(Customer customer) {
         CustomerEntity customerEntity = CustomerMapper.dtoToEntity(customer);
 
-        Optional<CustomerEntity> existingEntity = customerRepository.findById(customer.getId());
+        Optional<CustomerEntity> existingEntity = customerRepository.findById(customer.getCustomerId());
 
         if (existingEntity.isPresent()) {
             CustomerEntity updatedEntity = existingEntity.get();

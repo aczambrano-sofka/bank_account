@@ -1,24 +1,36 @@
-package ec.com.sofka;
+package ec.com.sofka.data;
 
-public abstract class Person {
+public class CustomerResponseDTO {
 
+    private Integer customerId;
     private String name;
     private String gender;
     private Integer age;
     private String identification;
     private String address;
     private String phone;
+    private Boolean status;
 
-    public Person(String name, String gender, Integer age, String identification, String address, String phone) {
+    public CustomerResponseDTO(Integer customerId, String name, String gender, Integer age, String identification, String address, String phone, Boolean status) {
+        this.customerId = customerId;
         this.name = name;
         this.gender = gender;
         this.age = age;
         this.identification = identification;
         this.address = address;
         this.phone = phone;
+        this.status = status;
     }
 
-    public Person() {
+    public CustomerResponseDTO() {
+    }
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -67,5 +79,13 @@ public abstract class Person {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

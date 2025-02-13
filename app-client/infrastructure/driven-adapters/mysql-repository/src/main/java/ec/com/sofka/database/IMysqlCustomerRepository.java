@@ -1,4 +1,4 @@
-package ec.com.sofka.config;
+package ec.com.sofka.database;
 
 import ec.com.sofka.data.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
