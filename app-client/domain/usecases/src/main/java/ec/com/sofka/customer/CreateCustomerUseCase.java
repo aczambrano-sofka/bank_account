@@ -10,7 +10,6 @@ public class CreateCustomerUseCase {
 
     private final ICustomerRepository customerRepository;
 
-
     public CreateCustomerUseCase(ICustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
