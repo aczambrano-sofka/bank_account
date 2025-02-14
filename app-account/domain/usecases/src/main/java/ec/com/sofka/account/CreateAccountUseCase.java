@@ -1,7 +1,6 @@
 package ec.com.sofka.account;
 
 import ec.com.sofka.Account;
-import ec.com.sofka.ConflictException;
 import ec.com.sofka.gateway.IAccountRepository;
 
 import java.util.Optional;
@@ -14,11 +13,11 @@ public class CreateAccountUseCase {
         this.accountRepository = accountRepository;
     }
 
-    public Account createAccount(Account account) {
+    public Account execute(Account account) {
         Optional<Account> accountOptional = accountRepository.findByAccountNumber(account.getAccountNumber());
 
         if(accountOptional.isPresent()) {
-            throw new ConflictException("Account already exists");
+            throw new IllegalStateException("Account already exists");
         }
 
         return accountRepository.save(account);

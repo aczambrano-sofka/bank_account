@@ -4,6 +4,7 @@ import ec.com.sofka.Account;
 import ec.com.sofka.ConflictException;
 import ec.com.sofka.gateway.IAccountRepository;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class UpdateAccountUseCase {
@@ -13,13 +14,20 @@ public class UpdateAccountUseCase {
         this.accountRepository = accountRepository;
     }
 
-    public Account updateAccount(Account account) {
+    public Account execute(Account account) {
         Optional<Account> accountOptional = accountRepository.findById(account.getAccountId());
 
         if (accountOptional.isEmpty()) {
-            throw new ConflictException("The account with the given id does not exist.");
+            throw new NoSuchElementException("The account with the given id does not exist.");
         }
-        return accountRepository.save(account);
+
+        Account existingAccount = accountOptional.get();
+
+        existingAccount.setAccountType(account.getAccountType());
+        existingAccount.setInitialBalance(account.getInitialBalance());
+        existingAccount.setStatus(account.getStatus());
+
+        return accountRepository.save(existingAccount);
     }
 
 }

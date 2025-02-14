@@ -1,0 +1,9 @@
+dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.4'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

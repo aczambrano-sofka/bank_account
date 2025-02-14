@@ -17,3 +17,6 @@ findProject(':mysql-repository').projectDir = file('./infrastructure/driven-adap
 
 include ':web'
 findProject(':web').projectDir = file('./infrastructure/entry-points/web')
+
+include ':helpers'
+findProject(':helpers').projectDir = file('./shared/helpers')

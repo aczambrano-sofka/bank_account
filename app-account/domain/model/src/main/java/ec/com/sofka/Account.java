@@ -16,6 +16,18 @@ public class Account {
 
     private Integer customerId;
 
+    public Account(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId) {
+        this.accountId = accountId;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.initialBalance = initialBalance;
+        this.status = status;
+        this.customerId = customerId;
+    }
+
+    public Account() {
+    }
+
     public Integer getAccountId() {
         return accountId;
     }

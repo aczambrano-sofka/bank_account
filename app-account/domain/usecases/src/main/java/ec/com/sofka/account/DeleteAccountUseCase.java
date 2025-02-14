@@ -4,6 +4,7 @@ import ec.com.sofka.Account;
 import ec.com.sofka.ConflictException;
 import ec.com.sofka.gateway.IAccountRepository;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class DeleteAccountUseCase {
@@ -17,7 +18,7 @@ public class DeleteAccountUseCase {
     public void execute(Integer accountId) {
         Optional<Account> account = accountRepository.findById(accountId);
         if (account.isEmpty()) {
-            throw new ConflictException("The account with the given id does not exist.");
+            throw new NoSuchElementException("The account with the given id does not exist.");
         }
 
         Account existingAccount = account.get();

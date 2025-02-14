@@ -13,7 +13,7 @@ public class FindAllAccountUseCase {
         this.accountRepository = accountRepository;
     }
 
-    public List<Account> findAllAccounts() {
+    public List<Account> execute() {
         return accountRepository.findAll();
     }
 
