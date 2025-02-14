@@ -14,7 +14,6 @@ public class UpdateTransactionUseCase {
         this.transactionrepository = transactionrepository;
     }
 
-
     public Transaction execute(Transaction transaction) {
         Optional<Transaction> existingTransactionOpt = transactionrepository.findByAccountId(transaction.getAccountId());
 

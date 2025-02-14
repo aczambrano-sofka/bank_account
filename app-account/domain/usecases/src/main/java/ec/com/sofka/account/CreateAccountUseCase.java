@@ -14,7 +14,7 @@ public class CreateAccountUseCase {
         this.accountRepository = accountRepository;
     }
 
-    public Account createAccount(Account account) {
+    public Account execute(Account account) {
         Optional<Account> accountOptional = accountRepository.findByAccountNumber(account.getAccountNumber());
 
         if(accountOptional.isPresent()) {

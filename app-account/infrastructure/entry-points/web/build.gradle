@@ -2,11 +2,12 @@ dependencies{
     implementation project(':usecases')
     implementation project(':model')
     implementation project(':exception')
-
+    implementation project(':mysql-repository')
     implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.1.0'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 
 
     runtimeOnly 'com.mysql:mysql-connector-j'

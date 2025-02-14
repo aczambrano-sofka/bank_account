@@ -13,7 +13,7 @@ public class UpdateAccountUseCase {
         this.accountRepository = accountRepository;
     }
 
-    public Account updateAccount(Account account) {
+    public Account execute(Account account) {
         Optional<Account> accountOptional = accountRepository.findById(account.getAccountId());
 
         if (accountOptional.isEmpty()) {

@@ -50,7 +50,6 @@ public class GlobalErrorHandler {
         return createErrorResponse(ex, HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
     }
 
-    // Método para construir una respuesta de error
     private ResponseEntity<ErrorResponse> createErrorResponse(Throwable ex, HttpStatus status, String message) {
         ErrorResponse errorResponse = new ErrorResponse(
                 status.value(),

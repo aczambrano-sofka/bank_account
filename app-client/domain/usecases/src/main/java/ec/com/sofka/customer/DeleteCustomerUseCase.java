@@ -8,7 +8,6 @@ import java.util.Optional;
 
 public class DeleteCustomerUseCase {
 
-
     private final ICustomerRepository customerRepository;
 
     public DeleteCustomerUseCase(ICustomerRepository customerRepository) {

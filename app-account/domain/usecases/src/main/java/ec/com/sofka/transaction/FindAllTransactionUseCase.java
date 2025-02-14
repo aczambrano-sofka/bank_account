@@ -14,7 +14,7 @@ public class FindAllTransactionUseCase {
     }
 
 
-    public List<Transaction> findAll() {
+    public List<Transaction> execute() {
         return transactionrepository.findAll();
     }
 

@@ -1,22 +1,17 @@
-package ec.com.sofka;
+package ec.com.sofka.data;
 
 import java.math.BigDecimal;
 
-public class Account {
+public class AccountResponseDTO {
 
     private Integer accountId;
-
     private String accountNumber;
-
     private String accountType;
-
     private BigDecimal initialBalance;
-
     private Boolean status;
-
     private Integer customerId;
 
-    public Account(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId) {
+    public AccountResponseDTO(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId) {
         this.accountId = accountId;
         this.accountNumber = accountNumber;
         this.accountType = accountType;
@@ -25,8 +20,7 @@ public class Account {
         this.customerId = customerId;
     }
 
-    public Account() {
-    }
+    public AccountResponseDTO() {}
 
     public Integer getAccountId() {
         return accountId;
@@ -75,4 +69,5 @@ public class Account {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
+
 }
