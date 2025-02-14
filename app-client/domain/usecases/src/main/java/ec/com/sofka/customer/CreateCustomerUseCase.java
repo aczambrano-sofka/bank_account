@@ -16,11 +16,12 @@ public class CreateCustomerUseCase {
     }
 
     public Customer execute(Customer customer) {
-        Optional<Customer> existingCustomerOpt = customerRepository.findByIdentification(customer.getIdentification());
 
-        if (existingCustomerOpt.isPresent()) {
-            throw new ConflictException("The identification is already registered.");
-        }
+        customerRepository.findByIdentification(customer.getIdentification())
+                .ifPresent( customer1 -> {
+                    throw new ConflictException("The identification is already registered.");
+                });
+
         customer.setPassword(PasswordUtils.encryptPassword(customer.getPassword()));
         return customerRepository.save(customer);
     }

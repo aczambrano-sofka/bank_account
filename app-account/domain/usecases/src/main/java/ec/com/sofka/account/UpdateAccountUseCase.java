@@ -15,19 +15,14 @@ public class UpdateAccountUseCase {
     }
 
     public Account execute(Account account) {
-        Optional<Account> accountOptional = accountRepository.findById(account.getAccountId());
-
-        if (accountOptional.isEmpty()) {
-            throw new NoSuchElementException("The account with the given id does not exist.");
-        }
-
-        Account existingAccount = accountOptional.get();
-
-        existingAccount.setAccountType(account.getAccountType());
-        existingAccount.setInitialBalance(account.getInitialBalance());
-        existingAccount.setStatus(account.getStatus());
-
-        return accountRepository.save(existingAccount);
+        return accountRepository.findById(account.getAccountId())
+                .map(existingAccount -> {
+                            existingAccount.setAccountType(account.getAccountType());
+                            existingAccount.setInitialBalance(account.getInitialBalance());
+                            existingAccount.setStatus(account.getStatus());
+                            return accountRepository.save(existingAccount);
+                        })
+                .orElseThrow(() -> new NoSuchElementException("The account with the given id does not exist."));
     }
 
 }

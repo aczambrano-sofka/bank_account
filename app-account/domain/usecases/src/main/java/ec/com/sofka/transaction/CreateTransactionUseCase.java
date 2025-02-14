@@ -25,13 +25,8 @@ public class CreateTransactionUseCase {
     @Transactional
     public Transaction execute(Transaction transaction) {
 
-        Optional<Account> accountOptional = accountRepository.findById(transaction.getAccountId());
-
-        if(accountOptional.isEmpty()) {
-            throw new NoSuchElementException("The account with the given id does not exist.");
-        }
-
-        Account account = accountOptional.get();
+        Account account = accountRepository.findById(transaction.getAccountId())
+                .orElseThrow(() -> new NoSuchElementException("The account with the given id does not exist."));
 
         BigDecimal newBalance = account.getInitialBalance().add(transaction.getValue());
 

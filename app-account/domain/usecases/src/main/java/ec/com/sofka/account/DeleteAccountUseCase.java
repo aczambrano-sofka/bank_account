@@ -16,15 +16,12 @@ public class DeleteAccountUseCase {
     }
 
     public void execute(Integer accountId) {
-        Optional<Account> account = accountRepository.findById(accountId);
-        if (account.isEmpty()) {
-            throw new NoSuchElementException("The account with the given id does not exist.");
-        }
 
-        Account existingAccount = account.get();
-        existingAccount.setStatus(false);
-
-        accountRepository.save(existingAccount);
+        accountRepository.findById(accountId)
+                .map(account -> {
+                    account.setStatus(false);
+                    return accountRepository.save(account);
+                })
+                .orElseThrow(() -> new NoSuchElementException("The account with the given id does not exist."));
     }
-
 }

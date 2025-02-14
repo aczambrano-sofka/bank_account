@@ -15,16 +15,12 @@ public class DeleteCustomerUseCase {
     }
 
     public void execute(Integer identification) {
-        Optional<Customer> existingCustomerOpt = customerRepository.findById(identification);
 
-        if (existingCustomerOpt.isEmpty()) {
-            throw new ConflictException("The customer with the given identification does not exist.");
-        }
+        Customer customer = customerRepository.findById(identification)
+                .orElseThrow(() -> new ConflictException("Customer not found"));
 
-        Customer existingCustomer = existingCustomerOpt.get();
-        existingCustomer.setStatus(false);
-
-        customerRepository.update(existingCustomer);
+        customer.setStatus(false);
+        customerRepository.update(customer);
     }
 
 }

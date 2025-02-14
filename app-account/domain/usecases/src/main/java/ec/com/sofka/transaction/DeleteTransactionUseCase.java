@@ -17,16 +17,13 @@ public class DeleteTransactionUseCase {
 
 
     public void execute(Integer id) {
-        Optional<Transaction> transaction = transactionrepository.findById(id);
-
-        if (transaction.isEmpty()) {
-            throw new NoSuchElementException("The transaction with the given id does not exist.");
-        }
-
-        Transaction existingTransaction = transaction.get();
-
-        transactionrepository.delete(existingTransaction);
-
+        transactionrepository.findById(id)
+                .ifPresentOrElse(
+                        transaction -> transactionrepository.delete(transaction),
+                        () -> {
+                            throw new NoSuchElementException("The transaction with the given id does not exist.");
+                        }
+                );
     }
 
 
