@@ -20,3 +20,9 @@ findProject(':web').projectDir = file('./infrastructure/entry-points/web')
 
 include ':helpers'
 findProject(':helpers').projectDir = file('./shared/helpers')
+
+include ':rabbit-properties'
+findProject(':rabbit-properties').projectDir = file('./shared/rabbit-properties')
+
+include ':rabbit-listener-bus'
+findProject(':rabbit-listener-bus').projectDir = file('./infrastructure/entry-points/rabbit-listener-bus')
