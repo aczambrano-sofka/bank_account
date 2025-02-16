@@ -1,14 +1,20 @@
 package ec.com.sofka.account;
 
 import ec.com.sofka.Account;
+import ec.com.sofka.data.CustomerInfoRequestRecord;
 import ec.com.sofka.gateway.IAccountRepository;
+import ec.com.sofka.gateway.IBusMessage;
+
+import java.util.Optional;
 
 public class CreateAccountUseCase {
 
     private final IAccountRepository accountRepository;
+    private final IBusMessage busMessage;
 
-    public CreateAccountUseCase(IAccountRepository accountRepository) {
+    public CreateAccountUseCase(IAccountRepository accountRepository, IBusMessage busMessage) {
         this.accountRepository = accountRepository;
+        this.busMessage = busMessage;
     }
 
     public Account execute(Account account) {
@@ -19,6 +25,12 @@ public class CreateAccountUseCase {
                             throw new IllegalStateException("Account already exists");
                         }
                 );
+
+        Optional.ofNullable(busMessage.sendMessage(account.getCustomerId()))
+                .filter(Integer.class::isInstance)
+                .map(Integer.class::cast)
+                .orElseThrow(() -> new IllegalStateException("Customer id not found"));
+
         return accountRepository.save(account);
     }
 

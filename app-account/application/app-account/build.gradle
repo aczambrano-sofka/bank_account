@@ -4,11 +4,16 @@ dependencies {
     implementation project(':web')
     implementation project(':model')
     implementation project(':exception')
+    implementation project (':rabbit-info-bus')
+    implementation project(':rabbit-properties')
+
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
 
 }

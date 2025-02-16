@@ -1,0 +1,10 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+
+    implementation project(':usecases')
+    implementation project(':rabbit-properties')
+    implementation project(":model")
+
+}

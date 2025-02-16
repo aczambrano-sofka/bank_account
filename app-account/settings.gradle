@@ -17,3 +17,9 @@ findProject(':mysql-repository').projectDir = file('./infrastructure/driven-adap
 
 include ':web'
 findProject(':web').projectDir = file('./infrastructure/entry-points/web')
+
+include ':rabbit-properties'
+findProject(':rabbit-properties').projectDir = file('./shared/rabbit-properties')
+
+include ':rabbit-info-bus'
+findProject(':rabbit-info-bus').projectDir = file('./infrastructure/driven-adapters/rabbit-info-bus')
