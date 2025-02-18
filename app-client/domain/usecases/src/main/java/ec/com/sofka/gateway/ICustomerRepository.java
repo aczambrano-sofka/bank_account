@@ -10,5 +10,5 @@ public interface ICustomerRepository {
     Customer update(Customer customer);
     List<Customer> findAll();
     Optional<Customer> findById(Integer id);
-    Optional<Customer> findByIdentification(String identification);  // Busca por identificación
+    Optional<Customer> findByIdentification(String identification);
 }

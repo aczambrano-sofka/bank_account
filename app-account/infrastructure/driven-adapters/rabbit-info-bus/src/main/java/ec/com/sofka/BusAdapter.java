@@ -1,6 +1,8 @@
 package ec.com.sofka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ec.com.sofka.data.CustomerInfoRecord;
+import ec.com.sofka.data.CustomerInfoRequestRecord;
 import ec.com.sofka.gateway.IBusMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
@@ -20,7 +22,7 @@ public class BusAdapter implements IBusMessage {
 
 
     @Override
-    public Object sendMessage(Integer  request) {
+    public Object sendMessage(CustomerInfoRequestRecord request) {
 
         Object response = rabbitTemplate.convertSendAndReceive(
                 rabbitEnvProperties.getCustomerExchange(),
@@ -32,8 +34,13 @@ public class BusAdapter implements IBusMessage {
 
             if (response instanceof Integer) {
                 return (Integer) response;
-            }else {
-                throw new IllegalStateException("Unexpected response type from bus: " + response.getClass().getName());
+            } if (response instanceof LinkedHashMap) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                return objectMapper.convertValue(response, CustomerInfoRecord.class);
+            }
+
+            if (response instanceof CustomerInfoRecord) {
+                return response;
             }
         }
         return null;

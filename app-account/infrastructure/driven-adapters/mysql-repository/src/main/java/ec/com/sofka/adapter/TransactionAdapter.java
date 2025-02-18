@@ -7,6 +7,7 @@ import ec.com.sofka.gateway.ITransactionrepository;
 import ec.com.sofka.mapper.TransactionMapper;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -80,5 +81,14 @@ public class TransactionAdapter implements ITransactionrepository {
         } else {
             throw new RuntimeException("Transaction not found");
         }
+    }
+
+    @Override
+    public List<Transaction> findTransactionsByDateRangeAndCustomer(LocalDateTime startDate, LocalDateTime endDate, Integer accountId) {
+        List<TransactionEntity> movementList = transactionRepository.findTransactionsByDateRangeAndCustomer(startDate,endDate,accountId);
+        return movementList
+                .stream()
+                .map(TransactionMapper::entityToTransaction)
+                .collect(Collectors.toList());
     }
 }

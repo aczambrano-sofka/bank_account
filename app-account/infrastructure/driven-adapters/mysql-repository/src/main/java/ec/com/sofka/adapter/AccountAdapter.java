@@ -66,4 +66,10 @@ public class AccountAdapter implements IAccountRepository {
             throw new RuntimeException("Account not found");
         }
     }
+
+    @Override
+    public Optional<Account> findByCustomerId(Integer customerId) {
+        Optional<AccountEntity> accountEntity = accountRepository.findByCustomerId(customerId);
+        return accountEntity.map(AccountMapper::entityToAccount);
+    }
 }

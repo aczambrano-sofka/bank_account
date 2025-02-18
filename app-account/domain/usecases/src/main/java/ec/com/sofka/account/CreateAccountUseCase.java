@@ -26,7 +26,7 @@ public class CreateAccountUseCase {
                         }
                 );
 
-        Optional.ofNullable(busMessage.sendMessage(account.getCustomerId()))
+        Optional.ofNullable(busMessage.sendMessage(new CustomerInfoRequestRecord(account.getCustomerId(),false)))
                 .filter(Integer.class::isInstance)
                 .map(Integer.class::cast)
                 .orElseThrow(() -> new IllegalStateException("Customer id not found"));

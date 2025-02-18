@@ -11,5 +11,6 @@ public interface IMySqlAccountRepository extends JpaRepository<AccountEntity, In
     Optional<AccountEntity> findById(Integer id);
     Optional<AccountEntity> findByAccountNumber(String accountNumber);
     List<AccountEntity> findAll();
+    Optional<AccountEntity> findByCustomerId(Integer id);
 
 }

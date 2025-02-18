@@ -2,6 +2,7 @@ package ec.com.sofka.controller;
 
 import ec.com.sofka.data.AccountRequestDTO;
 import ec.com.sofka.data.AccountResponseDTO;
+import ec.com.sofka.data.AccountStatementResponseDTO;
 import ec.com.sofka.handler.AccountHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,5 +42,14 @@ public class AccountController {
         accountHandler.deleteAccount(accountId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/reports")
+    public ResponseEntity<List<AccountStatementResponseDTO>> getReports(
+            @RequestParam("date") String dateRange,
+            @RequestParam("customerId") Integer customerIdentification
+    ) {
+        return ResponseEntity.ok(accountHandler.getAccountStatements(dateRange, customerIdentification));
+    }
+
 
 }

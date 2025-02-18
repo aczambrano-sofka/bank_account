@@ -2,6 +2,7 @@ package ec.com.sofka.account;
 
 import ec.com.sofka.Account;
 import ec.com.sofka.ConflictException;
+import ec.com.sofka.data.CustomerInfoRequestRecord;
 import ec.com.sofka.gateway.IAccountRepository;
 import ec.com.sofka.gateway.IBusMessage;
 
@@ -18,7 +19,7 @@ public class UpdateAccountUseCase {
 
     public Account execute(Account account) {
 
-        Optional.ofNullable(busMessage.sendMessage(account.getCustomerId()))
+        Optional.ofNullable(busMessage.sendMessage(new CustomerInfoRequestRecord(account.getCustomerId(),false)))
                 .filter(Integer.class::isInstance)
                 .map(Integer.class::cast)
                 .orElseThrow(() -> new IllegalStateException("Customer id not found"));
