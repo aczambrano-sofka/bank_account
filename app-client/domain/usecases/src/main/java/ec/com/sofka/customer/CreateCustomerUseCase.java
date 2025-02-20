@@ -5,8 +5,6 @@ import ec.com.sofka.Customer;
 import ec.com.sofka.PasswordUtils;
 import ec.com.sofka.gateway.ICustomerRepository;
 
-import java.util.Optional;
-
 public class CreateCustomerUseCase {
 
     private final ICustomerRepository customerRepository;

@@ -46,9 +46,9 @@ public class AccountController {
     @GetMapping("/reports")
     public ResponseEntity<List<AccountStatementResponseDTO>> getReports(
             @RequestParam("date") String dateRange,
-            @RequestParam("customerId") Integer customerIdentification
+            @RequestParam("accountId") Integer accountId
     ) {
-        return ResponseEntity.ok(accountHandler.getAccountStatements(dateRange, customerIdentification));
+        return ResponseEntity.ok(accountHandler.getAccountStatements(dateRange, accountId));
     }
 
 

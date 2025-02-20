@@ -16,6 +16,8 @@ public class Account {
 
     private Integer customerId;
 
+    
+
     public Account(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId) {
         this.accountId = accountId;
         this.accountNumber = accountNumber;

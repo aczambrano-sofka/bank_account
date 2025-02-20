@@ -1,7 +1,6 @@
 package ec.com.sofka.account;
 
 import ec.com.sofka.Account;
-import ec.com.sofka.ConflictException;
 import ec.com.sofka.data.CustomerInfoRequestRecord;
 import ec.com.sofka.gateway.IAccountRepository;
 import ec.com.sofka.gateway.IBusMessage;
