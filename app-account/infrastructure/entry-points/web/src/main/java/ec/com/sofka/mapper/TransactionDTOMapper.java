@@ -4,6 +4,8 @@ import ec.com.sofka.Transaction;
 import ec.com.sofka.data.TransactionRequestDTO;
 import ec.com.sofka.data.TransactionResponseDTO;
 
+import java.time.LocalDateTime;
+
 public class TransactionDTOMapper {
 
     public static Transaction toTransaction(TransactionRequestDTO transactionRequestDTO) {

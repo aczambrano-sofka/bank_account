@@ -1,6 +1,7 @@
 package ec.com.sofka;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Account {
 
@@ -16,7 +17,7 @@ public class Account {
 
     private Integer customerId;
 
-    
+    private List<Transaction> transactions;
 
     public Account(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId) {
         this.accountId = accountId;
@@ -25,6 +26,16 @@ public class Account {
         this.initialBalance = initialBalance;
         this.status = status;
         this.customerId = customerId;
+    }
+
+    public Account(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId, List<Transaction> transactions) {
+        this.accountId = accountId;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.initialBalance = initialBalance;
+        this.status = status;
+        this.customerId = customerId;
+        this.transactions = transactions;
     }
 
     public Account() {
@@ -76,5 +87,13 @@ public class Account {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

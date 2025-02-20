@@ -1,6 +1,7 @@
 package ec.com.sofka.mapper;
 
 import ec.com.sofka.Transaction;
+import ec.com.sofka.data.AccountEntity;
 import ec.com.sofka.data.TransactionEntity;
 
 public class TransactionMapper {
@@ -16,7 +17,7 @@ public class TransactionMapper {
         transaction.setTransactionType(transactionEntity.getTransactionType());
         transaction.setValue(transactionEntity.getValue());
         transaction.setBalance(transactionEntity.getBalance());
-        transaction.setAccountId(transactionEntity.getAccountId());
+        transaction.setAccountId(transactionEntity.getAccount().getAccountId());
         return transaction;
     }
 
@@ -31,7 +32,8 @@ public class TransactionMapper {
         transactionEntity.setTransactionType(transaction.getTransactionType());
         transactionEntity.setValue(transaction.getValue());
         transactionEntity.setBalance(transaction.getBalance());
-        transactionEntity.setAccountId(transaction.getAccountId());
+        transactionEntity.setAccount(new AccountEntity(transaction.getAccountId()));
+
         return transactionEntity;
     }
 

@@ -11,11 +11,11 @@ import java.util.Optional;
 
 public interface IMySqlTransactionRepository extends JpaRepository<TransactionEntity, Integer> {
     Optional<TransactionEntity> findById(Integer id);
-    List<TransactionEntity> findByAccountId(Integer accountId);
+    List<TransactionEntity> findByAccount_AccountId(Integer accountId);
     List<TransactionEntity> findAll();
 
     @Query("SELECT m FROM TransactionEntity m WHERE m.date BETWEEN :startDate AND :endDate " +
-            "AND m.accountId= :accountId " +
+            "AND m.account .accountId= :accountId " +
             "ORDER BY m.date DESC")
 
     List<TransactionEntity> findTransactionsByDateRangeAndCustomer(

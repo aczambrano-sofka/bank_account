@@ -5,13 +5,11 @@ public class ErrorResponse {
     private int status;
     private String error;
     private String message;
-    private String path;
 
-    public ErrorResponse(int status, String error, String message, String path) {
+    public ErrorResponse(int status, String error, String message) {
         this.status = status;
         this.error = error;
         this.message = message;
-        this.path = path;
     }
 
     // Getters y setters
@@ -40,11 +38,4 @@ public class ErrorResponse {
         this.message = message;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
 }

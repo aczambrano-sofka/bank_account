@@ -38,7 +38,7 @@ public class TransactionAdapter implements ITransactionrepository {
 
     @Override
     public Optional<Transaction> findByAccountId(Integer accountId) {
-        List<TransactionEntity> transactionEntities = transactionRepository.findByAccountId(accountId);
+        List<TransactionEntity> transactionEntities = transactionRepository.findByAccount_AccountId(accountId);
         if (transactionEntities.isEmpty()) {
             return Optional.empty();
         }
@@ -62,8 +62,6 @@ public class TransactionAdapter implements ITransactionrepository {
             updatedEntity.setTransactionType(transaction.getTransactionType());
             updatedEntity.setValue(transaction.getValue());
             updatedEntity.setBalance(transaction.getBalance());
-            updatedEntity.setAccountId(transaction.getAccountId());
-
             transactionRepository.save(updatedEntity);
             return TransactionMapper.entityToTransaction(updatedEntity);
         } else {

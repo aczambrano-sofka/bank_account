@@ -59,7 +59,6 @@ public class AccountAdapter implements IAccountRepository {
             updatedEntity.setInitialBalance(account.getInitialBalance());
             updatedEntity.setStatus(account.getStatus());
             updatedEntity.setCustomerId(account.getCustomerId());
-
             accountRepository.save(updatedEntity);
             return AccountMapper.entityToAccount(updatedEntity);
         } else {

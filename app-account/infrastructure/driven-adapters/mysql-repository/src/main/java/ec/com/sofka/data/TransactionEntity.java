@@ -1,5 +1,6 @@
 package ec.com.sofka.data;
 
+import ec.com.sofka.Account;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -19,7 +20,7 @@ public class TransactionEntity {
 
     private LocalDateTime date;
 
-    @NotBlank
+    @NotNull
     @Column(name = "transaction_type", nullable = false)
     private String transactionType;
 
@@ -29,26 +30,25 @@ public class TransactionEntity {
 
     private BigDecimal balance;
 
-    @NotNull
-    @Column(name = "account_id", nullable = false)
-    private Integer accountId;
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private AccountEntity account;
 
-    public TransactionEntity(Integer transactionId, LocalDateTime date, String transactionType, BigDecimal value, BigDecimal balance, Integer accountId) {
+
+    public TransactionEntity() {
+    }
+
+    public Integer getTransactionId() {
+        return transactionId;
+    }
+
+    public TransactionEntity(Integer transactionId, LocalDateTime date, String transactionType, BigDecimal value, BigDecimal balance, AccountEntity account) {
         this.transactionId = transactionId;
         this.date = date;
         this.transactionType = transactionType;
         this.value = value;
         this.balance = balance;
-        this.accountId = accountId;
-    }
-
-    public TransactionEntity() {
-
-    }
-
-
-    public Integer getTransactionId() {
-        return transactionId;
+        this.account = account;
     }
 
     public void setTransactionId(Integer transactionId) {
@@ -87,11 +87,11 @@ public class TransactionEntity {
         this.balance = balance;
     }
 
-    public Integer getAccountId() {
-        return accountId;
+    public AccountEntity getAccount() {
+        return account;
     }
 
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
+    public void setAccount(AccountEntity account) {
+        this.account = account;
     }
 }

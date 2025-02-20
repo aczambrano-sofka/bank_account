@@ -1,11 +1,9 @@
 package ec.com.sofka.customer;
 
-import ec.com.sofka.ConflictException;
 import ec.com.sofka.Customer;
+import ec.com.sofka.EntityNotFoundException;
 import ec.com.sofka.PasswordUtils;
 import ec.com.sofka.gateway.ICustomerRepository;
-
-import java.util.Optional;
 
 public class UpdateCustomerUseCase {
 
@@ -18,7 +16,7 @@ public class UpdateCustomerUseCase {
     public Customer execute(Customer customer){
 
         customerRepository.findById(customer.getCustomerId())
-                .orElseThrow(() -> new ConflictException("Customer not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Customer not found"));
 
         customer.setPassword(PasswordUtils.encryptPassword(customer.getPassword()));
 

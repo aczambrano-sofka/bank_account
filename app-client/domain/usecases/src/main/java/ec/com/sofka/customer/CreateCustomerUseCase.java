@@ -2,8 +2,11 @@ package ec.com.sofka.customer;
 
 import ec.com.sofka.ConflictException;
 import ec.com.sofka.Customer;
+import ec.com.sofka.EntityNotFoundException;
 import ec.com.sofka.PasswordUtils;
 import ec.com.sofka.gateway.ICustomerRepository;
+
+import java.util.NoSuchElementException;
 
 public class CreateCustomerUseCase {
 

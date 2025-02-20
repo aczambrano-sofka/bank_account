@@ -21,7 +21,7 @@ public class UpdateAccountUseCase {
         Optional.ofNullable(busMessage.sendMessage(new CustomerInfoRequestRecord(account.getCustomerId(),false)))
                 .filter(Integer.class::isInstance)
                 .map(Integer.class::cast)
-                .orElseThrow(() -> new IllegalStateException("Customer id not found"));
+                .orElseThrow(() -> new NoSuchElementException("Customer id not found"));
 
         return accountRepository.findById(account.getAccountId())
                 .map(existingAccount -> {

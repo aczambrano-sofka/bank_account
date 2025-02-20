@@ -2,6 +2,7 @@ package ec.com.sofka.exceptions;
 
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import ec.com.sofka.ConflictException;
+import ec.com.sofka.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -50,14 +51,17 @@ public class GlobalErrorHandler {
         return createErrorResponse(ex, HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
     }
 
-    // Método para construir una respuesta de error
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleEntityNotFound(EntityNotFoundException ex) {
+        return createErrorResponse(ex, HttpStatus.NOT_FOUND, ex.getMessage());
+    }
+
     private ResponseEntity<ErrorResponse> createErrorResponse(Throwable ex, HttpStatus status, String message) {
         ErrorResponse errorResponse = new ErrorResponse(
                 status.value(),
                 status.getReasonPhrase(),
-                message,
-
-                "Unknown Path"
+                message
         );
         return new ResponseEntity<>(errorResponse, status);
     }

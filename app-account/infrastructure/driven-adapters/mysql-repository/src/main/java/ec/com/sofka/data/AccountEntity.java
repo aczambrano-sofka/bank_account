@@ -3,6 +3,7 @@ package ec.com.sofka.data;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.validation.constraints.*;
 
@@ -38,17 +39,26 @@ public class AccountEntity {
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
 
-    public AccountEntity(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId) {
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<TransactionEntity> transactions;
+
+
+    public AccountEntity() {
+
+    }
+
+    public AccountEntity(Integer accountId) {
+        this.accountId = accountId;
+    }
+
+    public AccountEntity(Integer accountId, String accountNumber, String accountType, BigDecimal initialBalance, Boolean status, Integer customerId, List<TransactionEntity> transactions) {
         this.accountId = accountId;
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.initialBalance = initialBalance;
         this.status = status;
         this.customerId = customerId;
-    }
-
-    public AccountEntity() {
-
+        this.transactions = transactions;
     }
 
     public Integer getAccountId() {
@@ -97,5 +107,13 @@ public class AccountEntity {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public List<TransactionEntity> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<TransactionEntity> transactions) {
+        this.transactions = transactions;
     }
 }

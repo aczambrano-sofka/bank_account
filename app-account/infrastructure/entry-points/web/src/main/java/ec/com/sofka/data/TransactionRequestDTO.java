@@ -3,6 +3,7 @@ package ec.com.sofka.data;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ public class TransactionRequestDTO {
     private Integer accountId;
 
     @NotNull(message = "Transaction type cannot be null")
+    @Pattern(regexp = "Deposit|Withdrawal", message = "Type account must be Deposit, Withdrawal")
     private String transactionType;
 
     @NotNull(message = "Value cannot be null")
